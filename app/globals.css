@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #09090b;          /* pure neutral, no blue tint */
+  --surface: #0e0e11;     /* slightly lifted page sections */
+  --card: #131317;        /* cards sit ~6% above bg for elevation */
+  --card-hover: #17171c;
+  --fg: #ededed;
+  --muted: #8a8a90;
+  --border: #232329;
+  --border-strong: #2e2e36;
+  --accent: #8b5cf6;
+  --accent-soft: rgba(139, 92, 246, 0.14);
+  --accent-fg: #c4b5fd;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  font-feature-settings: 'cv11', 'ss01';
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { letter-spacing: -0.02em; }
+
+::selection { background: var(--accent); color: #fff; }
+
+/* subtle scrollbars */
+* { scrollbar-width: thin; scrollbar-color: var(--border-strong) transparent; }
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 8px; }
+
+/* ---- reusable primitives ---- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: border-color .12s ease, background .12s ease;
+}
+.card-hover:hover { border-color: var(--border-strong); background: var(--card-hover); }
+.card-accent:hover { border-color: var(--accent); }
+
+.chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 10px; line-height: 1;
+  padding: 3px 7px; border-radius: 6px;
+  background: #1a1a1f; color: var(--muted);
+  border: 1px solid transparent;
+}
+.chip-btn:hover { color: #fff; border-color: var(--border); }
+
+.brand-gradient {
+  background: linear-gradient(135deg, #c4b5fd 0%, #8b5cf6 55%, #6366f1 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* ---- transcript prose ---- */
+.prose-claude pre {
+  background: #0c0c0f;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.prose-claude code { background: #1a1a1f; padding: 1px 6px; border-radius: 4px; font-size: 0.9em; }
+.prose-claude pre code { background: transparent; padding: 0; }
+.prose-claude a { color: var(--accent-fg); text-decoration: underline; text-underline-offset: 2px; }
+.prose-claude h1, .prose-claude h2, .prose-claude h3 { font-weight: 600; margin-top: 1.2em; margin-bottom: 0.4em; }
+.prose-claude p { margin: 0.6em 0; }
+.prose-claude ul, .prose-claude ol { margin: 0.6em 0; padding-left: 1.4em; }
+.prose-claude li { margin: 0.2em 0; }
+.prose-claude blockquote { border-left: 2px solid var(--border-strong); padding-left: 12px; color: var(--muted); }
+.prose-claude table { border-collapse: collapse; margin: 0.6em 0; }
+.prose-claude th, .prose-claude td { border: 1px solid var(--border); padding: 4px 8px; font-size: 13px; }
